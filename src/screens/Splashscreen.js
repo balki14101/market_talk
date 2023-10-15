@@ -1,17 +1,28 @@
 import {Image, StyleSheet, Text, View, Dimensions} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
+
+//navigation
+import {useNavigation} from '@react-navigation/native';
 
 //constants
 import {Colors} from '../constants/Colors';
-//assets
-import Pic from '../assets/Enter-OTP.png';
 import {Height} from '../constants/Dimensions';
 
+//assets
+import Logo from '../assets/logo.png';
+
 const Splashscreen = () => {
+  let navigation = useNavigation();
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate('Welcome');
+    }, 1000);
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Text style={{backgroundColor: Colors.Primary_blue}}>splashScreen</Text>
-      <Image source={Pic} style={styles.image} />
+      <Image source={Logo} style={styles.image} />
     </View>
   );
 };
