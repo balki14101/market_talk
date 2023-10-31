@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 
 //constants
@@ -21,6 +21,11 @@ const CustomButton = ({
   fontWeight,
   borderRadius,
   marginTop,
+  marginBottom,
+  elevation,
+  imageName,
+  imageHeight,
+  imageWidth,
 }) => {
   const styles = StyleSheet.create({
     button: {
@@ -30,9 +35,13 @@ const CustomButton = ({
       borderWidth: borderWidth ? borderWidth : 0,
       borderColor: borderColor ? borderColor : Colors.Black,
       borderRadius: borderRadius ? borderRadius : 0,
+
+      marginTop: marginTop ? marginTop : 0,
+      marginBottom: marginBottom ? marginBottom : 0,
+      elevation: elevation ? elevation : 0,
+      flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: marginTop ? marginTop : 0,
     },
     text: {
       color: textColor ? textColor : Colors.White,
@@ -48,6 +57,13 @@ const CustomButton = ({
         style={styles.button}
         onPress={onpress}
         disabled={disable}>
+        {imageName ? (
+          <Image
+            source={imageName}
+            style={{height: imageHeight, width: imageWidth, marginRight: 16}}
+            resizeMode="contain"
+          />
+        ) : null}
         <Text style={styles.text}>{text}</Text>
       </TouchableOpacity>
     </View>
